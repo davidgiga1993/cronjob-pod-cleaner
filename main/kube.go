@@ -52,13 +52,15 @@ func (k *KubeApi) CleanPods(dryRun bool) error {
 			if !exists {
 				// Delete pod
 				if dryRun {
-					klog.Infof("Would delete pod %v in ns %v", pod.Name, namespace)
+					klog.Infof("would delete pod %v in ns %v", pod.Name, namespace)
 					continue
 				}
 
-				klog.Infof("Delete pod %v in ns %v", pod.Name, namespace)
+				klog.Infof("delete pod %v in ns %v", pod.Name, namespace)
 				err := core.Pods(namespace).Delete(k.ctx, pod.Name, metav1.DeleteOptions{})
-				klog.Errorf("could not delete pod %v in ns %v : %v", pod.Name, namespace, err)
+				if err != nil {
+					klog.Errorf("could not delete pod %v in ns %v : %v", pod.Name, namespace, err)
+				}
 			}
 		}
 		return nil
