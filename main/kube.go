@@ -57,7 +57,7 @@ func (k *KubeApi) CleanPods(dryRun bool) error {
 				}
 
 				klog.Infof("Delete pod %v in ns %v", pod.Name, namespace)
-				err := core.Pods(jobName).Delete(k.ctx, pod.Name, metav1.DeleteOptions{})
+				err := core.Pods(namespace).Delete(k.ctx, pod.Name, metav1.DeleteOptions{})
 				klog.Errorf("could not delete pod %v in ns %v : %v", pod.Name, namespace, err)
 			}
 		}

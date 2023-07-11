@@ -85,4 +85,4 @@ subjects:
 ```
 
 ## Contribute
-Since this is hopefully a temporary issue I don't expect any contribution, but feel free to open MRs / issues if you thing something is missing.
+Since this is hopefully a temporary issue I don't expect any contribution, but feel free to open MRs / issues if you think something is missing.
